@@ -8,10 +8,12 @@ std::string get_input()
 {
     std::ifstream file{"inputs/day1"};
     std::istreambuf_iterator<char> begin{file}, end;
-    return std::string{begin, end};
+    std::string res{begin, end};
+    file.close();
+    return res;
 }
 
-int solve(const std::string& input)
+void solve(const std::string& input)
 {
     std::vector<int> res{0};
     size_t i = 0, pos = 0, prev = 0;
@@ -33,8 +35,6 @@ int solve(const std::string& input)
 
     size_t l = res.size();
     fmt::print("part1: {}\npart2: {}\n", res.back(), res[l - 1] + res[l - 2] + res[l - 3]);
-
-    return 0;
 }
 
 int main()
